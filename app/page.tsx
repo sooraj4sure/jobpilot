@@ -15,8 +15,21 @@ async function postJson<T>(url: string, body: unknown): Promise<T> {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(body),
   });
-  const data = await res.json();
-  if (!res.ok) throw new Error(data.error || `Request to ${url} failed.`);
+  const raw = await res.text();
+  let data: unknown;
+  try {
+    data = JSON.parse(raw);
+  } catch {
+    throw new Error(
+      res.status === 504
+        ? "The request timed out on the server. Try again, or reduce input size."
+        : `Unexpected server response (${res.status}): ${raw.slice(0, 150)}`
+    );
+  }
+  if (!res.ok) {
+    const errData = data as { error?: string };
+    throw new Error(errData.error || `Request to ${url} failed.`);
+  }
   return data as T;
 }
 
