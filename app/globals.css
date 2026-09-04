@@ -1,0 +1,100 @@
+@import "tailwindcss";
+
+/*
+  Design concept: a flight log / instrument panel for a job application.
+  - Serif (system old-style) carries narrative content: headlines, the
+    fit summary, cover letter text.
+  - Mono carries data: scores, tags, gap types, coaching notes — anything
+    that reads as an instrument reading rather than prose.
+  - Sans carries UI chrome: buttons, nav, form labels.
+  - Color is used semantically, not decoratively: teal = matched, amber =
+    underdeveloped, rust = missing, slate = unclear. The accent (amber) is
+    otherwise reserved for the single primary action per screen.
+*/
+
+:root {
+  --ink: #12141c;
+  --ink-soft: #171c2a;
+  --panel: #1b2030;
+  --panel-line: #2a3040;
+  --paper: #ece8de;
+  --paper-dim: #b9b4a5;
+  --muted: #8b8a80;
+  --accent: #d8a438;
+  --accent-dim: #a37c2c;
+  --teal: #5b9c93;
+  --rust: #c1613f;
+  --slate: #7c88a6;
+
+  --font-display: "Iowan Old Style", "Palatino Linotype", "Sitka Text", Georgia, serif;
+  --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, "Liberation Mono", monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--font-body);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+textarea,
+input,
+button {
+  font-family: inherit;
+}
+
+textarea::placeholder,
+input::placeholder {
+  color: var(--muted);
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+/* Thin scrollbars matching the panel aesthetic */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--panel-line);
+  border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-dim);
+}
