@@ -5,6 +5,7 @@ import {
   buildInterviewQuestionsPrompt,
 } from "@/lib/prompts";
 import type { InterviewResult, MatchResult } from "@/lib/types";
+export const maxDuration = 60;
 
 export async function POST(req: NextRequest) {
   try {

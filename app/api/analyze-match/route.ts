@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { callGemini, GeminiApiError } from "@/lib/gemini";
 import { SYSTEM_PROMPT_MATCHING, buildMatchingPrompt } from "@/lib/prompts";
 import type { MatchResult } from "@/lib/types";
+export const maxDuration = 60;
 
 export async function POST(req: NextRequest) {
   try {

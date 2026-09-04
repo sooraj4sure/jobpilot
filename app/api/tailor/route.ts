@@ -7,7 +7,7 @@ import {
   buildVerificationPrompt,
 } from "@/lib/prompts";
 import type { TailorResult, VerificationResult, MatchResult } from "@/lib/types";
-
+export const maxDuration = 60;
 export async function POST(req: NextRequest) {
   try {
     const { originalBullets, jdText, gapAnalysis } = await req.json() as {
