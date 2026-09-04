@@ -29,7 +29,7 @@ export function TailorStep({
           Tailor your bullets
         </h2>
         <p className="text-sm mt-1" style={{ color: "var(--muted)" }}>
-          Paste the specific resume section you want rewritten — usually one job or
+          Paste the specific resume section you want rewritten usually one job or
           project. Every rewrite is checked in a separate pass and reverted if it
           introduces a claim your original text doesn&apos;t support.
         </p>

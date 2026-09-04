@@ -132,7 +132,7 @@ export default function Home() {
             JobPilot
           </span>
           <span className="font-mono text-xs" style={{ color: "var(--muted)" }}>
-            resume · gap analysis · interview prep
+            RESUME · GAP ANALYSIS · INTERVIEW PREP.
           </span>
         </div>
       </header>
