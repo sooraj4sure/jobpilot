@@ -6,7 +6,7 @@ const nextConfig: NextConfig = {
   // failed"). Keeping these packages external makes the API route load
   // them as plain Node modules instead of bundling them, which avoids the
   // worker-path resolution issue entirely.
-  serverExternalPackages: ["pdf-parse", "pdfjs-dist"],
+serverExternalPackages: ["pdf-parse", "pdfjs-dist", "@napi-rs/canvas"],
 };
 
 export default nextConfig;
