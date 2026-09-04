@@ -11,6 +11,10 @@ export async function parseResumeFile(
   let text = "";
 
   if (name.endsWith(".pdf") || file.type === "application/pdf") {
+    // Must be imported before pdf-parse itself — this sets up the canvas
+    // factory and polyfills the browser globals (DOMMatrix, ImageData)
+    // that pdfjs-dist expects, which plain Node doesn't provide.
+    await import("pdf-parse/worker");
     // pdf-parse v2 exposes a class-based API rather than the old default-export function.
     const { PDFParse } = await import("pdf-parse");
     const parser = new PDFParse({ data: buffer });
